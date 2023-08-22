@@ -19,7 +19,7 @@ class UserRepository {
             apiClient.registerUser(registerRequest)
         }
     }
-    suspend fun LoginActivity(loginRequest: LoginRequest):Response<LoginResponse>{
+    suspend fun loginActivity(loginRequest: LoginRequest):Response<LoginResponse>{
         return withContext(Dispatchers.IO){
             apiClient.loginUsers(loginRequest)
         }

@@ -21,14 +21,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        redirectUser()
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         binding.btLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
         binding.btRegister.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
             validateForm()
             clearErrors()
         }
@@ -43,9 +49,10 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, regResponse.message, Toast.LENGTH_LONG).show()
             startActivity(Intent(this, LoginActivity::class.java))
         })
+
     }
 
-    private fun validateForm(): Boolean {
+ fun validateForm() {
         val firstname = binding.etFirstName.text.toString()
         val lastName = binding.etEmail2.text.toString()
         val phoneNumber = binding.etPhoneNumber.text.toString()
@@ -57,35 +64,29 @@ class MainActivity : AppCompatActivity() {
         if (firstname.isEmpty()) {
             error = true
             binding.etFirstName.error = "First Name is required"
-            return false
         }
         if (lastName.isEmpty()) {
             error = true
             binding.etEmail2.error = "Last name is required"
-            return false
         }
 
         if (phoneNumber.isEmpty()) {
             error = true
             binding.etPhoneNumber.error = "Phone number is required"
-            return false
         }
 
         if (email.isEmpty()) {
             error = true
             binding.etEmail.error = "Email address is required"
-            return false
         }
 
         if (password != confirm) {
             error = true
             binding.etPassword.error = "Password is required"
-            return false
         }
         if (password != confirm) {
             error = true
             binding.etPassword.error = "Password does not match"
-            return false
         }
         if (!error) {
             val registerRequest = RegisterRequest(
@@ -98,10 +99,9 @@ class MainActivity : AppCompatActivity() {
             binding.pbRegister.visibility = View.VISIBLE
             userViewModel.registerUser(registerRequest)
         }
-        return true
     }
 
-    private fun clearErrors() {
+   fun clearErrors() {
         binding.tilFirstName.error = null
         binding.tilPhoneNumber.error = null
         binding.tilEmail.error = null
@@ -110,12 +110,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun redirectUser(){
-        val sharedPrefs = getSharedPreferences(Constants.PREFS , Context.MODE_PRIVATE )
-        var userId = sharedPrefs.(Constants.USER_ID , Constants.EMPTY_STRING) ?: Constants.EMPTY_STRING
-            startActivity(Intent(this, HomeActivity:: class.java))
+        val sharedPrefs = getSharedPreferences(Constants.PREFS, Context.MODE_PRIVATE)
+        val userId =sharedPrefs.getString(Constants.USER_ID,Constants.EMPTY_STRING)!!
+        if (userId.isNotBlank()){
+            startActivity(Intent(this,HomeActivity::class.java))
+            finish()
         }
 
-
-
     }
+
+
+
+
+
+
+
+
+
+}
 

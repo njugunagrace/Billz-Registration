@@ -39,16 +39,16 @@ class LoginActivity : AppCompatActivity() {
             val loginButton: Button = binding.btLogin2
 
         loginButton.setOnClickListener {
-            if (validate()) {
-                val username = binding.etEmail2.text.toString()
-                val password = binding.etPassword.text.toString()
+//            if (validate()) {
+//                val username = binding.etEmail2.text.toString()
+//                val password = binding.etPassword.text.toString()
 
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
 
 
-            }
+//            }
         }
     }
 

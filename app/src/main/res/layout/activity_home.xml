@@ -2,26 +2,44 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btnLogout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.HomeActivity">
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnvHome"
         android:layout_width="0dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="160dp"
+        android:text="Logout"
+        app:layout_constraintBottom_toTopOf="@+id/bnvHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fcvHome"
+        android:id="@+id/fvcHome"
         android:name="com.gracie.billz.ui.SummaryFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
         app:layout_constraintBottom_toTopOf="@+id/bnvHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_summary" />
+        tools:layout='@layout/fragment_summary' />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
