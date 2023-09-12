@@ -10,6 +10,7 @@ class HomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_home)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
@@ -18,15 +19,18 @@ class HomeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         setUpBottomNav()
-        binding.btnLogout.setOnClickListener {
-        }
+//        binding.btnLogout.setOnClickListener {
+//        }
     }
 
     private fun setUpBottomNav(){
         binding.bnvHome.setOnItemSelectedListener {menuItem->
              when(menuItem.itemId){
                 R.id.summary -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.fvcHome, SummaryFragment()).commit()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fvcHome, SummaryFragment())
+                        .commit()
                     true
                 }
                  R.id.upcoming -> {
@@ -34,7 +38,8 @@ class HomeActivity : AppCompatActivity() {
                      true
                  }
                  R.id.paid -> {
-                     supportFragmentManager.beginTransaction().replace(R.id.fvcHome, PaidBillzFragment()).commit()
+                     supportFragmentManager.beginTransaction()
+                         .replace(R.id.fvcHome, PaidBillzFragment()).commit()
                      true
                  }
                  R.id.settings -> {

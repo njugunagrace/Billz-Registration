@@ -6,4 +6,8 @@
     <string name="upcoming">Upcoming</string>
     <string name="paid">paid</string>
     <string name="settings">settings</string>
+
+    <string name="amount">Amount</string>
+    <string name="name">Name</string>
+    <string name="add_a_bill">Add a bill</string>
 </resources>
